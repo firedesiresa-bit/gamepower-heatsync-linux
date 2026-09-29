@@ -34,6 +34,20 @@ sudo apt install python3-serial lm-sensors
 
 Check that `sensors -j` includes `k10temp` and that `nvidia-smi` reports the intended GPU before starting the sender.
 
+## Install automatically
+
+Download the installer, inspect it if you like, then run it as your normal desktop user (not with `sudo`):
+
+```bash
+curl -fLO https://raw.githubusercontent.com/firedesiresa-bit/gamepower-heatsync-linux/main/install.sh
+less install.sh
+bash install.sh
+```
+
+The installer downloads the project source, installs missing Ubuntu packages (`python3`, `python3-serial`, `lm-sensors`, and CA certificates) through APT, checks the AMD sensor, NVIDIA telemetry command, serial device, and user access, then installs and starts the user systemd service. It may ask for your password for APT. If `nvidia-smi` is missing but an APT-installed NVIDIA driver is present, it installs that driver's matching utilities package. It does not install or replace the NVIDIA driver itself.
+
+For a different serial path, use `bash install.sh --port /dev/serial/by-id/YOUR_DEVICE`. To install without starting the service, pass `--no-activate`.
+
 ## Run
 
 ```bash

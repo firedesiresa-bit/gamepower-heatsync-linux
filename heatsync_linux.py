@@ -108,7 +108,10 @@ def stats_packet(cpu_temp: int, gpu_temp: int, cpu_load: float, gpu_load: int) -
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--port", default=DEFAULT_PORT, help="HeatSync serial device")
+    parser.add_argument(
+        "--port", default=os.environ.get("HEATSYNC_PORT", DEFAULT_PORT),
+        help="HeatSync serial device",
+    )
     parser.add_argument("--gpu-index", type=int, default=0, help="nvidia-smi GPU index")
     parser.add_argument("--interval", type=float, default=1.0, help="update period in seconds")
     parser.add_argument("--once", action="store_true", help="send one live update and exit")
