@@ -1,0 +1,12 @@
+[Unit]
+Description=Gamepower HeatSync live hardware telemetry
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/gamepower-heatsync
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
