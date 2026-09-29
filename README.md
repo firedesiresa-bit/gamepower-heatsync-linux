@@ -1,6 +1,6 @@
 # Gamepower HeatSync on Linux
 
-A small Linux telemetry sender for the Gamepower HeatSync / USB35INCH display. It reads local CPU and NVIDIA GPU sensors and updates the display over its USB serial connection. It does not run the Windows vendor app, change motherboard ARGB settings, or communicate with a Thermalright/TRCC display.
+Linux live telemetry and an autostart installer for the Gamepower HeatSync / USB35INCH LCD GPU holder.
 
 <p align="center">
   <img src="docs/images/heatsync-closeup.jpg" alt="Close-up of the Gamepower HeatSync holder showing live CPU and GPU temperatures" width="48%">
@@ -8,15 +8,23 @@ A small Linux telemetry sender for the Gamepower HeatSync / USB35INCH display. I
 </p>
 <p align="center"><sub>Photos show the working Linux setup described below.</sub></p>
 
+## What it solves
+
+The HeatSync screen is driven by companion software. This project lets Linux users feed it live readings without running the Windows app under an emulator. It replaces fixed or dummy-looking values with CPU and GPU temperatures; its side bars reflect CPU and GPU utilization.
+
+## How it works
+
+The Python program reads AMD CPU temperature from `k10temp`, CPU utilization from `/proc/stat`, and NVIDIA GPU temperature/utilization from `nvidia-smi`. It sends the values to the holder over its USB serial interface using the observed 115200-baud Gamepower status packet. The included installer checks prerequisites, installs supported Ubuntu packages, and enables a per-user systemd service for updates at login. It does not alter motherboard ARGB or control the Thermalright/TRCC cooler display.
+
 ## Hardware and current support
 
-The implementation was mapped against a Gamepower HeatSync holder on Ubuntu 26. The observed USB serial device identifies as `1a86:5722` and `USB35INCHIPSV2`; its Linux stable path was:
+Hardware-confirmed configuration: Ubuntu 26, AMD Ryzen 9 5950X, NVIDIA GeForce RTX 3080 Ti, and a Gamepower HeatSync holder. The observed USB serial device identifies as `1a86:5722` and `USB35INCHIPSV2`; its Linux stable path was:
 
 ```text
 /dev/serial/by-id/usb-Turing_UsbMonitor_USB35INCHIPSV2-if00
 ```
 
-The device may enumerate differently on another machine. Pass its actual path with `--port` if needed. The protocol and metrics have been confirmed with this device; other models and firmware revisions are unverified.
+The device may enumerate differently on another machine. Pass its actual path with `--port` if needed. Live metrics have been confirmed on this setup. Other CPUs, GPUs, HeatSync models, and firmware revisions are unverified. The installer has had syntax and configuration checks; it still needs a clean-machine installation check before a stable release.
 
 ## Requirements
 
