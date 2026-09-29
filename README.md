@@ -3,11 +3,10 @@
 A small Linux telemetry sender for the Gamepower HeatSync / USB35INCH display. It reads local CPU and NVIDIA GPU sensors and updates the display over its USB serial connection. It does not run the Windows vendor app, change motherboard ARGB settings, or communicate with a Thermalright/TRCC display.
 
 <p align="center">
-  <a href="https://gamepowerpc.com/accessory/heatsync"><img src="https://gamepowerpc.com/media/246/01K2M7B8SZ1WN0M816785H26HR.png" alt="Gamepower HeatSync holder product photo" width="31%"></a>
-  <a href="https://gamepowerpc.com/accessory/heatsync"><img src="https://gamepowerpc.com/media/contents/01K2M7B8PYYWJRWY6P0CA07GFQ.jpg" alt="Gamepower HeatSync product detail photo" width="31%"></a>
-  <a href="https://gamepowerpc.com/accessory/heatsync"><img src="https://gamepowerpc.com/media/contents/01K2M7B8Q940QRME8TPD3MH8FQ.jpg" alt="Gamepower HeatSync display and ARGB detail photo" width="31%"></a>
+  <img src="docs/images/heatsync-closeup.jpg" alt="Close-up of the Gamepower HeatSync holder showing live CPU and GPU temperatures" width="48%">
+  <img src="docs/images/heatsync-in-case.jpg" alt="Gamepower HeatSync installed beneath the graphics card inside the PC" width="48%">
 </p>
-<p align="center"><sub>Product images hosted by <a href="https://gamepowerpc.com/accessory/heatsync">Gamepower</a>.</sub></p>
+<p align="center"><sub>Photos show the working Linux setup described below.</sub></p>
 
 ## Hardware and current support
 
